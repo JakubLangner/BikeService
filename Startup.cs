@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BikeService.Models;
 using BikeService.Models.Database;
@@ -33,7 +34,7 @@ namespace BikeService
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider service)
         {
             if (env.IsDevelopment())
             {
@@ -58,6 +59,47 @@ namespace BikeService
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            CreateUserRoles(service).Wait();
+        }
+
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            // Initializing custom roles   
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
+
+            IdentityResult roleResult;
+
+            // Adding Admin Role
+            var roleCheck = await RoleManager.RoleExistsAsync("Admin");
+            if (!roleCheck)
+            {
+                //Create the roles and seed them to the database 
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+
+            roleCheck = await RoleManager.RoleExistsAsync("UnapprovedUser");
+            if (!roleCheck)
+            {
+                //Create the roles and seed them to the database 
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("UnapprovedUser"));
+            }
+            roleCheck = await RoleManager.RoleExistsAsync("Service");
+            if (!roleCheck)
+            {
+                //Create the roles and seed them to the database 
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Service"));
+            }
+
+            AppUser AdminUser = await UserManager.FindByNameAsync("Admin");
+            if (AdminUser == null)
+            {
+                var User = new AppUser();
+                User.UserName = "Admin";
+                await UserManager.CreateAsync(User, "Warszawa123.!");
+                await UserManager.AddToRoleAsync(User, "Admin");
+
+            }
         }
     }
 }
