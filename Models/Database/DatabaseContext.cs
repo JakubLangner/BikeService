@@ -15,7 +15,7 @@ namespace BikeService.Models.Database
         
         public DbSet<Bike> Bikes { get; set; }
         public DbSet<Archive> Archives { get; set; }
-        public DbSet<Parts> Warehouse { get; set; }
+        public DbSet<Storage> Storage { get; set; }
         public DbSet<Repair> Repairs { get; set; }
 
     }

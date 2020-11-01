@@ -15,5 +15,6 @@ namespace BikeService.Models
         public string TechnicalCondition { get; set; }
         public string BikeDestiny { get; set; }
         public string CurrentAdvertisingCampaign { get; set; }
+        public string BikeStatus { get; set; }
     }
 }

@@ -14,12 +14,13 @@ namespace BikeService.Models
         public virtual Bike Bike { get; set; }
         public virtual string UserId { get; set; }
         public virtual AppUser User { get; set; }
-        public virtual int? PartId { get; set; }
-        public virtual Parts Part { get; set; }
+        public virtual int? StorageId { get; set; }
+        public virtual Storage Storage { get; set; }
         public TimeSpan timeSpan { get; set; }
         public string DefectDescription { get; set; }
         public string Note { get; set; }
         public string RepairStatus { get; set; }
+        public string RepairPriority { get; set; }
 
     }
 }

@@ -4,14 +4,16 @@ using BikeService.Models.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BikeService.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20201028211606_AddedFieldToTableBikes")]
+    partial class AddedFieldToTableBikes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,51 +139,9 @@ namespace BikeService.Migrations
                     b.ToTable("Bikes");
                 });
 
-            modelBuilder.Entity("BikeService.Models.Repair", b =>
+            modelBuilder.Entity("BikeService.Models.Parts", b =>
                 {
-                    b.Property<int>("RepairId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BikeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DefectDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RepairPriority")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RepairStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StorageId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<TimeSpan>("timeSpan")
-                        .HasColumnType("time");
-
-                    b.HasKey("RepairId");
-
-                    b.HasIndex("BikeId");
-
-                    b.HasIndex("StorageId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Repairs");
-                });
-
-            modelBuilder.Entity("BikeService.Models.Storage", b =>
-                {
-                    b.Property<int>("StorageId")
+                    b.Property<int>("WarehousePartId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -201,9 +161,48 @@ namespace BikeService.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("StorageId");
+                    b.HasKey("WarehousePartId");
 
-                    b.ToTable("Storage");
+                    b.ToTable("Warehouse");
+                });
+
+            modelBuilder.Entity("BikeService.Models.Repair", b =>
+                {
+                    b.Property<int>("RepairId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BikeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DefectDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PartId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RepairStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<TimeSpan>("timeSpan")
+                        .HasColumnType("time");
+
+                    b.HasKey("RepairId");
+
+                    b.HasIndex("BikeId");
+
+                    b.HasIndex("PartId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Repairs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -354,9 +353,9 @@ namespace BikeService.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BikeService.Models.Storage", "Storage")
+                    b.HasOne("BikeService.Models.Parts", "Part")
                         .WithMany()
-                        .HasForeignKey("StorageId");
+                        .HasForeignKey("PartId");
 
                     b.HasOne("BikeService.Models.AppUser", "User")
                         .WithMany()

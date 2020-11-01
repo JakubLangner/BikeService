@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace BikeService.Models
 {
-    public class Parts
+    public class Storage
     {
         [Key]
-        public int WarehousePartId { get; set; }
+        public int StorageId { get; set; }
         public string PartDescription { get; set; }
         public int Quantity { get; set; }
         public string BikeType { get; set; }
         public string PartName { get; set; }
-
         public string BikeAdvertisements { get; set; }
     }
 }
