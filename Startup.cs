@@ -5,6 +5,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BikeService.Models;
 using BikeService.Models.Database;
+using BikeService.Models.Interfaces;
+using BikeService.Models.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,19 @@ namespace BikeService
             services.AddControllersWithViews();
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("KubaConnection")));
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 1;
+                options.Password.RequiredUniqueChars = 0;
+            });
+            services.AddScoped<IBikeRepository, BikeRepository>();
+            services.AddScoped<IRepairRepository, RepairRepository>();
+            services.AddScoped<IStorageRepository, StorageRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +66,6 @@ namespace BikeService
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthorization();
             app.UseAuthentication();
             app.UseEndpoints(endpoints =>

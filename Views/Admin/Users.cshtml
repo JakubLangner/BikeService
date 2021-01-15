@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["ConfirmUser"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["ConfirmUser"]
+    </div>
+}
+@if (TempData["DeleteUser"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["DeleteUser"]
+    </div>
+}
+@if (TempData["EditUser"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["EditUser"]
+    </div>
+}
+@model IEnumerable<BikeService.ViewModels.Admin.UsersViewModel>
+
+
+<h2 style="text-align: center;">Wszyscy użytkownicy zarejestrowani w systemie</h2>
+
+<table class="table table-bordered" style="background-color:lightgrey">
+
+    <thead>
+        <tr>
+            <th>Użytkownik</th>
+            <th>Email</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Rola</th>
+            <th>Zarządzanie</th>
+        </tr>
+    </thead>
+
+    @foreach (var user in Model.ToList())
+    {
+
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@string.Join(",", user.Role.ToArray())</td>
+            <td>
+                @if (user.Role.Contains("UnapprovedUser"))
+                {
+                    <a id="editLine" asp-action="ConfirmUser" asp-route-userName="@user.UserName" class="btn btn-info btn-sm">Zatwierdź</a>
+                }
+                <a id="editLine" asp-action="EditUser" asp-route-userName="@user.UserName" class="btn btn-success btn-sm">Edytuj</a>
+                <a id="deleteLine" asp-action="DeleteUser" asp-route-userName="@user.UserName" class="btn btn-danger btn-sm">Usuń</a>
+            </td>
+        </tr>
+
+    }
+</table>

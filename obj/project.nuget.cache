@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "htrlDAkkF1vRa+qmzTgk0U0RIa4HNqvKxt6otiFP3ESwpUi0uFT/qgGNUBhsGlYfC4gHNgtkE9gRPp8wieJaBQ==",
+  "dgSpecHash": "XQCGwNJLsVleaDklgv/m+VD/djzErkw/O75if8CpN54PCHw2Zgq3FCTZZIt3XfK3VBfOw0WduB0pqTiuWpz4BA==",
   "success": true,
   "projectFilePath": "D:\\Informatyka\\Moje Projekty\\Asp.net Core\\BikeService\\BikeService.csproj",
   "expectedPackageFiles": [
@@ -167,9 +167,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\Jakub Langner\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\Jakub Langner\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.10\\microsoft.netcore.app.host.win-x64.3.1.10.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Admin dashboard</h1>
+
+<div class="container">
+    <div class="row">
+        <a asp-controller="Admin" asp-action="Users" class="btn btn-sq-lg btn-primary">
+            <img src="~/images/users.png" alt="ASP.NET" class="img-responsive" />
+            <h4 class="h4">Użytkownicy</h4>
+        </a>
+    </div>
+
+</div>
+
+<style>
+    .img-responsive {
+        width: 180px !important;
+        height: 190px !important;
+    }
+
+    .btn-sq-lg {
+        width: 200px !important;
+        height: 200px !important;
+        background-color: gainsboro;
+        border-color: black;
+        font-size: 10px;
+    }
+
+    .h4 {
+        color: black;
+    }
+
+    .btn-sq-lg:hover {
+        border: 3px solid white;
+        border-color: black;
+        background-color: gray;
+        font-weight: 800;
+    }
+</style>

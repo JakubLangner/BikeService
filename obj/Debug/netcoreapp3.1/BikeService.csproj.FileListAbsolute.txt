@@ -155,3 +155,7 @@ D:\Informatyka\Moje Projekty\Asp.net Core\BikeService\bin\Debug\netcoreapp3.1\zh
 D:\Informatyka\Moje Projekty\Asp.net Core\BikeService\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
 D:\Informatyka\Moje Projekty\Asp.net Core\BikeService\obj\Debug\netcoreapp3.1\Razor\Views\Login\Login.cshtml.g.cs
 D:\Informatyka\Moje Projekty\Asp.net Core\BikeService\obj\Debug\netcoreapp3.1\Razor\Views\Login\Register.cshtml.g.cs
+D:\Informatyka\Moje Projekty\Asp.net Core\BikeService\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Dashboard.cshtml.g.cs
+D:\Informatyka\Moje Projekty\Asp.net Core\BikeService\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Users.cshtml.g.cs
+D:\Informatyka\Moje Projekty\Asp.net Core\BikeService\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditUser.cshtml.g.cs
+D:\Informatyka\Moje Projekty\Asp.net Core\BikeService\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditUserLayout.cshtml.g.cs
