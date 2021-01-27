@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace BikeService.Controllers
 {
-    
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly IUserRepository _userRepository;
