@@ -63,7 +63,7 @@ namespace BikeService.Models.Repositories
         }
         public void  DeleteUser(AppUser user)
         {
-            var UserRoles = _context.UserRoles.FirstOrDefault(x => x.UserId == user.Id);          
+            var UserRoles = _context.UserRoles.FirstOrDefault(x => x.UserId == user.Id);
             var User = _context.Users.FirstOrDefault(x => x.Id == user.Id);
             _context.UserRoles.Remove(UserRoles);
             _context.Users.Remove(User);

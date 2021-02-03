@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="width: 1400px;">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Service" asp-action="AllBikes">Wszystkie rowery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Service" asp-action="Register">Rowery w naprawie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Service" asp-action="Register">Oczekujące</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Service" asp-action="Register">Naprawione</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

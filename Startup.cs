@@ -34,6 +34,7 @@ namespace BikeService
             services.AddControllersWithViews();
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("KubaConnection")));
             services.AddIdentity<AppUser, IdentityRole>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
+
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -43,6 +44,7 @@ namespace BikeService
                 options.Password.RequiredLength = 1;
                 options.Password.RequiredUniqueChars = 0;
             });
+
             services.AddScoped<IBikeRepository, BikeRepository>();
             services.AddScoped<IRepairRepository, RepairRepository>();
             services.AddScoped<IStorageRepository, StorageRepository>();
@@ -112,7 +114,7 @@ namespace BikeService
             {
                 var User = new AppUser();
                 User.UserName = "Admin";
-                await UserManager.CreateAsync(User, "Warszawa123.!");
+                await UserManager.CreateAsync(User, "admin");
                 await UserManager.AddToRoleAsync(User, "Admin");
 
             }

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<BikeService.Models.Bike>
+
+@{
+    ViewData["Title"] = "AllBikes";
+    Layout = "~/Views/Shared/_ServiceLayout.cshtml";
+}
+@if (TempData["AddBike"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AddBike"]
+    </div>
+}
+
+<h1 class="text-center">Wszystkie rowery w systemie</h1>
+
+<p class="ml-1">
+    <a asp-action="CreateBike" class="btn btn-dark btn-sm">Dodaj rower</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Numer roweru
+            </th>
+            <th>
+                Rok produkcji
+            </th>
+            <th>
+                Typ roweru
+            </th>
+            <th>
+                Kondycja techniczna
+            </th>
+            <th>
+                Przeznaczenie
+            </th>
+            <th>
+                Aktualna kampania rowerowa
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BikeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearOfProduction)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BikeType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TechnicalCondition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BikeDestiny)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentAdvertisingCampaign)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BikeStatus)
+                </td>
+                <td>
+                    <a asp-action="ChangeStatus" asp-route-id="@item.BikeId" class="btn btn-success btn-sm">Zmień status</a>
+                    <a asp-action="Details" asp-route-id="@item.BikeId" class="btn btn-primary btn-sm">Opis usterki</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
