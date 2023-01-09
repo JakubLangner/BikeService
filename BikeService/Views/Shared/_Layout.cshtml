@@ -5,41 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BikeService</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BikeService</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
+        <div class="bg-white dark:bg-gray-900 dark:border-gray-800 w-20 flex-shrink-0 border-r border-gray-200 flex-col hidden sm:flex">
+            <div class="h-16 text-blue-500 flex items-center justify-center">
+                <img src="~/images/logo.png" />
+            </div>
+            <div class="flex mx-auto flex-grow mt-4 flex-col text-gray-400 space-y-4">
+                <button class="btn h-10 w-12 dark:text-gray-500 rounded-md flex items-center justify-center bg-blue-100 text-blue-500"><i class="bi bi-house"></i></button>
+            </div>
+
+        </div>
+        <div class="flex-grow overflow-hidden h-full flex flex-col">
+            <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800 hidden px-10">
+                <div class="flex h-full text-gray-600 dark:text-gray-400">
+                    <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8">Moje konto</a>
+                    <a href="#" class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center">Moje naprawy</a>
+                    <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8">Usługi</a>
+                </div>
+                <div class="ml-auto flex items-center space-x-7">
+                    <button class="flex items-center">
+                        <span class="relative flex-shrink-0">
+                            <img class="w-7 h-7 rounded-full" src="https://images.unsplash.com/photo-1521587765099-8835e7201186?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="profile" />
+                        </span>
+                        <span class="ml-2">Mateusz Irek</span>
+                        @*<svg viewBox="0 0 24 24" class="w-4 ml-1 flex-shrink-0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>*@
+                    </button>
+                    <button class="h-8 px-3 rounded-md shadow text-white bg-blue-500">Wyloguj</button>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - BikeService - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="flex-grow flex overflow-x-hidden">
+                
+                <div class="flex-grow bg-white dark:bg-gray-900 overflow-y-auto">
+                    <div class="sm:p-7 p-4">
+                            @RenderBody() 
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
