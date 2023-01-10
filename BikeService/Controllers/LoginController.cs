@@ -97,7 +97,7 @@ namespace BikeService.Controllers
 				}
 				else
 				{
-					filePath = Path.Combine(webRoot.ToString() + "\\images\\userImages\\" + "userDefault.png");
+					filePath = "\\images\\userImages\\" + "userDefault.png";
 				}
 
 				if (string.IsNullOrEmpty(model.FirstName) || string.IsNullOrEmpty(model.LastName) || string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.Password))
@@ -112,7 +112,7 @@ namespace BikeService.Controllers
 					FirstName = model.FirstName,
 					LastName = model.LastName,
 					Email = model.Email,
-					PhoneNumber = model.PhoneNumber,
+					PhoneNumber = model.PhoneNumber ?? "",
 					ImagePath = "\\images\\userImages\\" + model.File.FileName
 				};
 
