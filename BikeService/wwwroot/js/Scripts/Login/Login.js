@@ -21,3 +21,29 @@
         }
     });
 }
+
+function registerToBikeService() {
+    var data = new FormData(document.getElementById('create-account-form'));
+
+
+    $.ajax({
+        type: "POST",
+        url: '/Login/Register',
+        data: data,
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            if (response.result) {
+                toastr.info('Zarejestrowano konto pomyślnie');
+                window.location.href = '/Home/Index/';
+            } else {
+                toastr.error(response.message)
+            }
+        },
+        error: function (response) {
+            toastr.error(response.responseText);
+        }
+    });
+}

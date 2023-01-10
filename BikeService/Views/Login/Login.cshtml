@@ -3,16 +3,16 @@
 
 <div class="container mt-5" id="container">
 	<div class="form-container sign-up-container">
-		<form id="createAccountForm">
+		<form id="create-account-form" enctype="multipart/form-data">
 			<h1>Stwórz konto</h1>
-			<input type="text" placeholder="Imię" />
-			<input type="text" placeholder="Nazwisko" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Hasło" />
-			<input type="tel" placeholder="Numer telefonu" />
+			<input required type="text" name="FirstName" value="@Model.FirstName" placeholder="Imię" />
+			<input required type="text" name="LastName" value="@Model.LastName" placeholder="Nazwisko" />
+			<input required type="email" name="Email" value="@Model.Email" placeholder="Email" />
+			<input required type="password" name="Password" value="@Model.Password" placeholder="Hasło" />
+			<input type="tel" name="PhoneNumber" value="@Model.PhoneNumber" placeholder="Numer telefonu" />
 			<label for="user-image">Dodaj zdjęcie</label>
-			<input type="file" id="user-image" />
-			<button>Zarejestruj się</button>
+			<input type="file" name="File" id="user-image" />
+			<button type="button" id="register-to-bikeservice-btn">Zarejestruj się</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -53,6 +53,7 @@
 				$('#container').removeClass("right-panel-active");
 			});
 			$('#login-to-bikeservice-btn').on('click', loginToBikeService);
+			$('#register-to-bikeservice-btn').on('click', registerToBikeService);
 		});
 	</script>
 }
