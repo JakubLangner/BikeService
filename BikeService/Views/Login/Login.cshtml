@@ -1,0 +1,56 @@
+﻿<link rel="stylesheet" href="~/css/login.css" />
+
+<div class="container mt-5" id="container">
+	<div class="form-container sign-up-container">
+		<form id="createAccountForm" action="#">
+			<h1>Stwórz konto</h1>
+			<input type="text" placeholder="Imię" />
+			<input type="text" placeholder="Nazwisko" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<input type="tel" placeholder="Numer telefonu" />
+			<label for="user-image">Dodaj zdjęcie</label>
+			<input type="file" id="user-image" />
+			<button>Zarejestruj się</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Zaloguj się</h1>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<a href="#">Nie pamietam hasła?</a>
+			<button>Zaloguj się</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Witaj z powrotem!</h1>
+				<p>Aby zalogować się do systemu wpisz swój login i hasło</p>
+				<button class="ghost" id="sign-in-switch">Zaloguj</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Witaj, przyjacielu!</h1>
+				<p>Załóż konto w naszym serwisie, aby cieszyć się jego wszystkimi możliwościami</p>
+				<button class="ghost" id="sign-up-switch">Zarejestruj się</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts
+{
+	<script src="/js/Scripts/Login/Login.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#sign-up-switch').on('click', () => {
+				$('#container').addClass("right-panel-active");
+			});
+
+			$('#sign-in-switch').on('click', () => {
+				$('#container').removeClass("right-panel-active");
+			});
+		});
+	</script>
+}

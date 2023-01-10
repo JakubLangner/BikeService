@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,9 +48,9 @@ namespace BikeService
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+			app.UseStaticFiles();
 
-            app.UseRouting();
+			app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -84,7 +86,7 @@ namespace BikeService
                 UserName = Configuration["AppSettings:UserName"],
                 Email = Configuration["AppSettings:UserEmail"],
                 FirstName = "Admin",
-                LastName = "Admin",
+                LastName = "",
                 
             };
             //Ensure you have these values in your appsettings.json file
