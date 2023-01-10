@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using static System.Collections.Specialized.BitVector32;
 
 namespace BikeService.Controllers
 {
@@ -46,6 +47,7 @@ namespace BikeService.Controllers
 					if (result.Succeeded)
 					{
 						HttpContext.Session.SetString("_UserName", user.FirstName + ' ' + user.LastName);
+						HttpContext.Session.SetString("_UserImg", user.ImagePath);
 						return Json(new { result = true });
 					}
 					else
@@ -60,5 +62,13 @@ namespace BikeService.Controllers
 				return new JsonResult(false, new { message = e.Message });
 			}
 		}
-	}
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Clear();
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+    }
 }

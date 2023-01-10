@@ -4,14 +4,16 @@ using BikeService.Models.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BikeService.Migrations
 {
     [DbContext(typeof(BikeServiceDbContext))]
-    partial class BikeServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230110103506_AddedColumnToUserTable")]
+    partial class AddedColumnToUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

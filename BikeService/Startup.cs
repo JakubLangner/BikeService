@@ -93,9 +93,9 @@ namespace BikeService
                 Email = Configuration["AppSettings:UserEmail"],
                 FirstName = "Admin",
                 LastName = "",
-                
+                ImagePath = "/images/userImages/userDefault.png"
             };
-            //Ensure you have these values in your appsettings.json file
+
             string userPWD = Configuration["AppSettings:UserPassword"];
             var _user = await UserManager.FindByEmailAsync(Configuration["AppSettings:UserEmail"]);
 
@@ -104,7 +104,6 @@ namespace BikeService
                 var createPowerUser = await UserManager.CreateAsync(poweruser, userPWD);
                 if (createPowerUser.Succeeded)
                 {
-                    //here we tie the new user to the role
                     await UserManager.AddToRoleAsync(poweruser, "Admin");
 
                 }

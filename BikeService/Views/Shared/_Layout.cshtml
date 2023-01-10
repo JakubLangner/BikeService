@@ -45,14 +45,14 @@
                     {
                         <button class="flex items-center">
                             <span class="relative flex-shrink-0">
-                                <img class="w-7 h-7 rounded-full" src="/images/userImages/userDefault.png" alt="profile" />
+                                <img class="w-7 h-7 rounded-full" src="@HttpContextAccessor.HttpContext.Session.GetString("_UserImg")" alt="profile" />
                             </span>
                             <span class="ml-2">@HttpContextAccessor.HttpContext.Session.GetString("_UserName")</span>
                             @*<svg viewBox="0 0 24 24" class="w-4 ml-1 flex-shrink-0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>*@
                         </button>
-                        <button class="h-8 px-3 rounded-md shadow text-blue-500 bg-blue-100">Wyloguj</button>
+                        <a asp-controller="Login" asp-action="Logout" class="btn btn-sm h-8 px-3 rounded-md shadow text-white bg-blue-500">Wyloguj</a>
                     }
                     else
                     {
@@ -73,4 +73,3 @@
 </body>
 </html>
 @RenderSection("Scripts",false)
-
