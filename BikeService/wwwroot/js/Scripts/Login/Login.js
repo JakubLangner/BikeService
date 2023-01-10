@@ -1,1 +1,23 @@
-﻿
+﻿function loginToBikeService() {
+
+    var data = $('#login-to-bikeservice-form').serialize();
+
+    $.ajax({
+        type: "POST",
+        url: '/Login/Login',
+        data: data,
+        async: true,
+        datatype: "application/json",
+        success: function (response) {
+            if (response.result) {
+                toastr.info('Zalogowano pomyślnie');
+                window.location.href = '/Home/Index/';
+            } else {
+                toastr.error(response.message)
+            }
+        },
+        error: function (response) {
+            
+        }
+    });
+}

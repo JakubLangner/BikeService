@@ -1,13 +1,14 @@
-﻿<link rel="stylesheet" href="~/css/login.css" />
+﻿@model BikeService.ViewModels.Login.LoginVM 
+<link rel="stylesheet" href="~/css/login.css" />
 
 <div class="container mt-5" id="container">
 	<div class="form-container sign-up-container">
-		<form id="createAccountForm" action="#">
+		<form id="createAccountForm">
 			<h1>Stwórz konto</h1>
 			<input type="text" placeholder="Imię" />
 			<input type="text" placeholder="Nazwisko" />
 			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			<input type="password" placeholder="Hasło" />
 			<input type="tel" placeholder="Numer telefonu" />
 			<label for="user-image">Dodaj zdjęcie</label>
 			<input type="file" id="user-image" />
@@ -15,12 +16,12 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form id="login-to-bikeservice-form">
 			<h1>Zaloguj się</h1>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			<input required name="Email" value="@Model.Email" type="email" placeholder="Email" />
+			<input required name="Password" value="@Model.Password" type="password" placeholder="Hasło" />
 			<a href="#">Nie pamietam hasła?</a>
-			<button>Zaloguj się</button>
+			<button type="button" id="login-to-bikeservice-btn">Zaloguj się</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -51,6 +52,7 @@
 			$('#sign-in-switch').on('click', () => {
 				$('#container').removeClass("right-panel-active");
 			});
+			$('#login-to-bikeservice-btn').on('click', loginToBikeService);
 		});
 	</script>
 }
